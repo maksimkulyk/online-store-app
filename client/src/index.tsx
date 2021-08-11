@@ -1,11 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { createContext } from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import DeviceStore from "./store/Device.store";
+import UserStore from "./store/User.store";
+
+type ContextProps = {
+  user: UserStore;
+  device: DeviceStore;
+};
+
+export const AppContext = createContext<Partial<ContextProps>>({});
 
 ReactDOM.render(
-  <React.StrictMode>
+  <AppContext.Provider
+    value={{
+      user: new UserStore(),
+      device: new DeviceStore(),
+    }}
+  >
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </AppContext.Provider>,
+  document.getElementById("root")
 );
-
