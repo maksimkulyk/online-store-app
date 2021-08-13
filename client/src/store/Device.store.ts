@@ -5,15 +5,21 @@ export default class UserStore {
   _types: IType[];
   _brands: IBrand[];
   _devices: IDevice[];
+  _selectedType: IType;
+  _selectedBrand: IBrand;
 
   constructor() {
     this._types = [
-      { id: 1, name: "Fridge" },
-      { id: 2, name: "Smartphone" },
+      { id: 1, name: "Fridges" },
+      { id: 2, name: "Smartphones" },
+      { id: 3, name: "Notebooks" },
+      { id: 4, name: "Gadgets" },
     ];
     this._brands = [
       { id: 1, name: "Nokia" },
       { id: 2, name: "Samsung" },
+      { id: 3, name: "Lenovo" },
+      { id: 4, name: "Acer" },
     ];
     this._devices = [
       {
@@ -44,7 +50,37 @@ export default class UserStore {
         rating: 0,
         img: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=600&fm=png&fl=png8",
       },
+      {
+        id: 5,
+        name: "8.3 5G",
+        price: 13630,
+        rating: 0,
+        img: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=600&fm=png&fl=png8",
+      },
+      {
+        id: 6,
+        name: "8.3 5G",
+        price: 13630,
+        rating: 0,
+        img: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=600&fm=png&fl=png8",
+      },
+      {
+        id: 7,
+        name: "8.3 5G",
+        price: 13630,
+        rating: 0,
+        img: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=600&fm=png&fl=png8",
+      },
+      {
+        id: 8,
+        name: "8.3 5G",
+        price: 13630,
+        rating: 0,
+        img: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=600&fm=png&fl=png8",
+      },
     ];
+    this._selectedType = {} as IType;
+    this._selectedBrand = {} as IBrand;
     makeAutoObservable(this);
   }
 
@@ -60,6 +96,14 @@ export default class UserStore {
     this._devices = devices;
   }
 
+  setSelectedType(type: IType) {
+    this._selectedType = type;
+  }
+
+  setSelectedBrand(brand: IBrand) {
+    this._selectedBrand = brand;
+  }
+
   get types() {
     return this._types;
   }
@@ -70,5 +114,13 @@ export default class UserStore {
 
   get devices() {
     return this._devices;
+  }
+
+  get selectedType() {
+    return this._selectedType;
+  }
+
+  get selectedBrand() {
+    return this._selectedBrand;
   }
 }

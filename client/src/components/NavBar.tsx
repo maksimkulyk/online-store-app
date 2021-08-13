@@ -4,7 +4,6 @@ import { Navbar, Container, Nav, Button } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { routes } from "../types.dt";
 import { observer } from "mobx-react-lite";
-import { findAllByTestId } from "@testing-library/react";
 
 interface Props {}
 
@@ -24,14 +23,9 @@ const NavBar = observer((props: Props) => {
 
   const notAuthorizedUser = (
     <Nav className="ml-auto">
-      <Button
-        variant="outline-light"
-        style={{ marginRight: "10px" }}
-        onClick={() => user?.setIsAuth(true)}
-      >
+      <Button variant="outline-light" onClick={() => user?.setIsAuth(true)}>
         Sign in
       </Button>
-      <Button variant="outline-primary">Sign up</Button>
     </Nav>
   );
 
