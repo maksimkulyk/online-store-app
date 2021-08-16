@@ -9,7 +9,6 @@ interface Props {
 
 const DeviceItem: FC<Props> = ({ device }) => {
   const history = useHistory();
-  console.log(history);
 
   return (
     <Col

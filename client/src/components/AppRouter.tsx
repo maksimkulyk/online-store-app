@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 import { Redirect, Route, Switch } from "react-router";
 import { AppContext } from "..";
@@ -5,8 +6,10 @@ import { authRoutes, publicRoutes } from "../routes";
 
 interface Props {}
 
-const AppRouter = (props: Props) => {
+const AppRouter = observer((props: Props) => {
   const { user } = useContext(AppContext);
+  console.log(user?.isAuth);
+
   return (
     <Switch>
       {user?.isAuth &&
@@ -19,6 +22,6 @@ const AppRouter = (props: Props) => {
       <Redirect to="/" />
     </Switch>
   );
-};
+});
 
 export default AppRouter;

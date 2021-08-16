@@ -1,6 +1,6 @@
 import Admin from "./pages/Admin";
 import Auth from "./pages/Auth";
-import Basket from "./pages/Basket";
+import Basket from "./pages/Cart";
 import DevicePage from "./pages/DevicePage";
 import Shop from "./pages/Shop";
 import { routes } from "./types.dt";

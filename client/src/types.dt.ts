@@ -24,3 +24,9 @@ export interface IDevice {
   rating: number;
   img: string;
 }
+
+export interface IDeviceInfo {
+  title: string;
+  description: string;
+  number: number;
+}
