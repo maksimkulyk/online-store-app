@@ -8,21 +8,22 @@ export enum routes {
 }
 
 export interface IType {
-  id: number;
+  id?: number;
   name: string;
 }
 
 export interface IBrand {
-  id: number;
+  id?: number;
   name: string;
 }
 
 export interface IDevice {
-  id: number;
+  id?: number;
   name: string;
   price: number;
   rating: number;
   img: string;
+  info?: IDeviceInfo[];
 }
 
 export interface IDeviceInfo {

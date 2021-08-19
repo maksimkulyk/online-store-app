@@ -17,10 +17,15 @@ const DeviceItem: FC<Props> = ({ device }) => {
       onClick={() => history.push(`${routes.DEVICE_ROUTE}/${device.id}`)}
     >
       <Card style={{ width: "14rem", cursor: "pointer" }} border="light">
-        <Card.Img variant="top" src={device.img} width={250} />
+        <Card.Img
+          variant="top"
+          src={`${process.env.REACT_APP_API_URL}${device.img}`}
+          width={250}
+          height={250}
+        />
         <Card.Body>
           <div className="d-flex justify-content-between align-items-center text-black-50">
-            <div>Nokia</div>
+            <div>{device.name}</div>
             <div>
               {device.rating}
               <span style={{ fontSize: "18px", fontWeight: "bolder" }}>

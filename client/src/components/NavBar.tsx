@@ -13,11 +13,11 @@ const NavBar = observer((props: Props) => {
 
   const signInHandler = () => {
     history.push(routes.LOGIN_ROUTE);
-    user?.setIsAuth(true);
   };
 
-  const signOutHandler = () => {
+  const logOutHandler = () => {
     history.push(routes.LOGIN_ROUTE);
+    user?.setUser({});
     user?.setIsAuth(false);
   };
 
@@ -30,8 +30,8 @@ const NavBar = observer((props: Props) => {
       >
         Admin
       </Button>
-      <Button variant="outline-light" onClick={signOutHandler}>
-        Sign out
+      <Button variant="outline-light" onClick={logOutHandler}>
+        Log out
       </Button>
     </Nav>
   );

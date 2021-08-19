@@ -8,7 +8,6 @@ interface Props {}
 
 const AppRouter = observer((props: Props) => {
   const { user } = useContext(AppContext);
-  console.log(user?.isAuth);
 
   return (
     <Switch>

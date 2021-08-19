@@ -1,29 +1,33 @@
+import { useEffect, useState } from "react";
 import { Col, Container, Image, Row, Card, Button } from "react-bootstrap";
+import { useParams } from "react-router";
+import { fetchDevice } from "../api/deviceApi";
+import { IDevice } from "../types.dt";
 import { getFormattedNumber } from "../utils/utils";
 
 interface Props {}
 
 const DevicePage = (props: Props) => {
-  const device = {
-    id: 1,
-    name: "8.3 5G",
-    price: 13630,
-    rating: 0,
-    img: "https://images.ctfassets.net/wcfotm6rrl7u/12hVmTabVOfaZX2orFYnwn/7317299d96cf5c43dfbfe8491bbf7016/nokia-8_3_5G-polar_night-front_back-int.png?h=600&fm=png&fl=png8",
+  const [device, setDevice] = useState<IDevice>({} as IDevice);
+  const { id } = useParams<{ id: string }>();
+
+  const getDevice = async (id: string) => {
+    const device = await fetchDevice(id);
+    setDevice(device);
   };
 
-  const description = [
-    { id: 1, title: "RAM", description: "5 GB" },
-    { id: 2, title: "Camera", description: "12 Mp" },
-    { id: 3, title: "Cors", description: "4" },
-    { id: 4, title: "Battery", description: "4500 mah" },
-  ];
+  useEffect(() => {
+    getDevice(id);
+  }, []);
 
   return (
     <Container className="mt-3">
       <Row>
         <Col md={4}>
-          <Image src={device.img} width={300} />
+          <Image
+            src={device.img && `${process.env.REACT_APP_API_URL}${device.img}`}
+            width={300}
+          />
         </Col>
         <Col md={4}>
           <div className="d-flex justify-content-between">
@@ -48,9 +52,9 @@ const DevicePage = (props: Props) => {
       </Row>
       <Row className="d-flex flex-column m-3">
         <h2>Specifications:</h2>
-        {description.map((info, index) => (
+        {device?.info?.map((info, index) => (
           <Row
-            key={info.id}
+            key={info.number}
             style={{
               background: index % 2 === 0 ? "lightgray" : "transparent",
               padding: 10,
