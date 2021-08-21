@@ -50,8 +50,8 @@ const CreateDevice: FC<Props> = observer(({ show, onHide }) => {
     formData.append("name", name);
     formData.append("price", `${price}`);
     formData.append("img", file);
-    formData.append("brandId", `${device?.selectedBrand.id}`);
-    formData.append("typeId", `${device?.selectedType.id}`);
+    formData.append("brandId", `${device?.selectedBrand!.id}`);
+    formData.append("typeId", `${device?.selectedType!.id}`);
     formData.append("info", JSON.stringify(info));
 
     await createDevice(formData);
@@ -72,7 +72,7 @@ const CreateDevice: FC<Props> = observer(({ show, onHide }) => {
         <Form>
           <Dropdown className="mt-3 mb-3">
             <Dropdown.Toggle>
-              {device?.selectedType.name || "Choose type"}
+              {device?.selectedType!.name || "Choose type"}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {device?.types.map((type) => (
@@ -87,7 +87,7 @@ const CreateDevice: FC<Props> = observer(({ show, onHide }) => {
           </Dropdown>
           <Dropdown className="mt-3 mb-3">
             <Dropdown.Toggle>
-              {device?.selectedBrand.name || "Choose brand"}
+              {device?.selectedBrand!.name || "Choose brand"}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               {device?.brands.map((brand) => (

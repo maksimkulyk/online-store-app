@@ -8,18 +8,20 @@ interface Props {}
 const TypeBar = observer((props: Props) => {
   const { device } = useContext(AppContext);
   return (
-    <ListGroup>
-      {device?.types.map((type) => (
-        <ListGroup.Item
-          key={type.id}
-          onClick={() => device.setSelectedType(type)}
-          active={type.id === device.selectedType.id}
-          action
-        >
-          {type.name}
-        </ListGroup.Item>
-      ))}
-    </ListGroup>
+    <>
+      <ListGroup>
+        {device?.types.map((type) => (
+          <ListGroup.Item
+            key={type.id}
+            onClick={() => device.setSelectedType(type)}
+            active={type.id === device.selectedType?.id}
+            action
+          >
+            {type.name}
+          </ListGroup.Item>
+        ))}
+      </ListGroup>
+    </>
   );
 });
 
